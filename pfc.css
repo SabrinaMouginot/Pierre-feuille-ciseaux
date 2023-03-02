@@ -25,3 +25,23 @@ section{
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     border-radius: 6px;
 }
+
+.choix{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.choix h4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    color: #999;
+}
+img{
+    width: 60px;
+    height: 60px;
+    margin: 20px 0;
+}
+
