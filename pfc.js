@@ -4,6 +4,9 @@ const contenantResultat = document.getElementById('resultat');
 
 const choixPossibles = document.querySelectorAll('button');
 let choixUtilisteur
+let resultat
+let choixOrdinateur
+
 // Evènement 'Click sur les buttons'
 choixPossibles.forEach(choixPossibles => choixPossibles.addEventListener('click',(e)=>{
     //récupération de l'ID du bouton cliqué
@@ -12,6 +15,7 @@ choixPossibles.forEach(choixPossibles => choixPossibles.addEventListener('click'
     //On ajoute l'image qui correspond au choix
     contenantChoixUtilisateur.innerHTML = `<img src="${choixUtilisteur}.png">`
     generer_choix_ordinateur()
+    verification()
 }))
 
 
@@ -28,7 +32,36 @@ function generer_choix_ordinateur(){
     if(random === 3){ //si random = à 1
         choixOrdinateur = "ciseaux"
     }
-    // on ajoute l'image qui correspind au choix
+    // on ajoute l'image qui correspond au choix
     contenantChoixOrdinateur.innerHTML = `<img src="${choixOrdinateur}.png">`
-    // generer_choix_ordinateur()
+}
+
+
+//Fonction pour verifier si le joueur a gagné ou pas
+
+function verification(){
+    if(choixUtilisteur == choixOrdinateur){
+        resultat = "Egalité!";
+    }
+    //Les cas où le joueur perd
+    if(choixUtilisteur == "pierre" && choixOrdinateur =="feuille"){
+        resultat = "Perdu!";
+    }
+    if(choixUtilisteur == "feuille" && choixOrdinateur =="ciseaux"){
+        resultat = "Perdu!";
+    }
+    if(choixUtilisteur == "ciseaux" && choixOrdinateur =="pierr"){
+        resultat = "Perdu!";
+    }
+    //Les cas où le joueur gagne
+    if(choixUtilisteur == "pierre" && choixOrdinateur =="ciseaux"){
+        resultat = "Gagné!";
+    }
+    if(choixUtilisteur == "ciseaux" && choixOrdinateur =="feuille"){
+        resultat = "Gagné!";
+    }
+    if(choixUtilisteur == "feuille" && choixOrdinateur =="pierre"){
+        resultat = "Gagné!";
+    }
+    contenantResultat.innerHTML = resultat;
 }
